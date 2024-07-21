@@ -49,9 +49,14 @@ I also conducted Tor connectivity tests for these time periods. While the normal
 experiencing), the Tor Snowflake test experienced \textit{only} anomalies, which I didn't quite know what to make of. It seems possible that Taiwan is limiting
 Tor Snowflake, but not Tor itself, but why is another matter.
 
+\subsection{ICLab: Autonomous System Censorship Leakage}
 Moving on to other websites, Censored Planet had almost no data related to Taiwan, so the remaining data point is a paper published on ICLab entitled
 "A Churn for the Better: Localizing Censorship Using Network-level Path Churn and Network Tomography" (\cite{Cho_CoNEXT17}). This paper identified the level
 of censorship being performed by autonomous systems across the world using "censorship leakage," a metric by which the larger network was affected by blockages
-and slowing in individual autonomous systems. According to this research, Taiwan had a single censoring autonomous system (compared to 6 in China, 0 in the
+and slowing in individual autonomous systems. The technique used by this paper, "boolean network tomography," works by trying to find the paths across the
+global Internet network and creating an image of the network and its traffic.
+
+According to this research, Taiwan had a single censoring autonomous system (compared to 6 in China, 0 in the
 United States and many other countries, and around 4-5 in a few European countries). This statistic supports the idea that Taiwan is performing some light
 censorship on its network, perhaps through an ISP.
+
