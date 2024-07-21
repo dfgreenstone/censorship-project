@@ -1,0 +1,57 @@
+\section{Body}\label{sec:body}
+
+To determine whether Internet censorship still exists in Taiwan and in what form, I looked at data from the global measurement platforms OONI, ICLab,
+and Censored Planet. This strategy was suggested in the paper "GFWeb: Measuring the Great Firewall's Web Censorship at Scale" by Nguyen Phong Hoang et al.,
+although the authors of said paper did note that each of those platforms has its own blind spots, and so this analysis should be understood to be highly
+preliminary. (The authors surmounted those blind spots by building their own system to test China's Great Firewall, but I have neither the time nor the
+technical knowledge to do the same here.)
+
+As such, we will go through the tests recorded on each of these measurement platforms in Taiwan, beginning with OONI.
+
+\subsection{OONI: Internet Connectivity Tests}
+Using OONI explorer, one can detect successful connections, confirmed instances of censorship, and anomalies when connecting to a specific web domain
+from a specific country during a specific time window. For the purposes of this study, I selected data from Taiwan only (sometimes investigating a specific
+website in other countries if its global status was unclear), from June 17 to July 17 of 2024, as well as from January 1 to February 1 of 2024 (the month of
+the recent Taiwanese national elections). 
+
+No instances of confirmed censorship were detected by OONI in either of the mentioned time periods in Taiwan, so instead, we will focus on rate of anomalies
+detected per total number of tests conducted. We will sort the websites into categories of "high anomalies" and "low anomalies," where high anomaly categories 
+displayed about 8\% or more of their tests as anomalies. Note that the anomaly occurrence rates between January and June 2024 were nearly identical.
+
+When examining the categories selectable on the OONI Explorer website, the high-anomaly (made up of more than 8\% anomalies) categories were e-commerce,
+pornography, provactive attire, alcohol and drugs, file sharing, and gambling. These categories seem to make up a "traditionally seen morally dubious"
+supercategory -- pornography, provocative attire, alcohol and drugs, and gambling all seen as vices in most of the world. E-commerce and file sharing are
+outliers here; from a censor's point of view, one might want to censor these categories simply to limit user access to unpredictable files or products,
+but these could also be pure noise, as anomalies do not indicate a 100\% likelihood of censorship.
+
+Notably absent from the anomalies sighted were categories that might involve political dissent, such as news media, human rights issues, et cetera. This 
+absence may indicate that political censorship is not a popular tactic in Taiwan. That being said, there are some specific political categories in which
+anomalies seemed to crop up more frequently.
+
+The first of these categories was websites directly operated by the Chinese government, as well as government-sponsored Chinese news websites and (slightly
+more surprisingly, although not terribly) the large Chinese Internet marketplace and general platform, Alibaba. This category is relatively unsurprising;
+China is Taiwan's greatest geopolitical threat, and Chinese government propaganda would logically be something the Taiwanese government would want to
+defend against. Since Chinese media outlets are often seen as mouthpieces for the government due to the strict censorship regime in place there, restricting
+the highest-profile Chinese media sites would fit with this philosophy.
+
+The next category was websites affiliated with the North Korean government. This category was also unsurprising; North Korea has an even tighter grip on 
+its media than China, and similarly is an ideological and geopolitical enemy of Taiwan. I did not observe any miscellaneous North Korean Internet platforms
+incurring anomalies as I did for China, but I am not sure if any such platforms even exist.
+
+Finally, a number of websites related to Islam and Islamic organizations experienced high rates of anomalies, such as the Organization of Islamic Cooperation
+and islamdoor.com (as well as a few websites related to general interreligious cooperation). Whether this is an intentional strategy to suppress Islamic
+content on the Taiwanese Internet, or purely noise, is unclear.
+
+(A number of Taiwanese news websites also experienced anomalies, but tests related to these websites experienced a high number of \textit{failures} as well,
+meaning the data for those websites may simply be garbage.)
+
+I also conducted Tor connectivity tests for these time periods. While the normal Tor test had a low anomaly rate (well within the ranges other countries were
+experiencing), the Tor Snowflake test experienced \textit{only} anomalies, which I didn't quite know what to make of. It seems possible that Taiwan is limiting
+Tor Snowflake, but not Tor itself, but why is another matter.
+
+Moving on to other websites, Censored Planet had almost no data related to Taiwan, so the remaining data point is a paper published on ICLab entitled
+"A Churn for the Better: Localizing Censorship Using Network-level Path Churn and Network Tomography" (\cite{Cho_CoNEXT17}). This paper identified the level
+of censorship being performed by autonomous systems across the world using "censorship leakage," a metric by which the larger network was affected by blockages
+and slowing in individual autonomous systems. According to this research, Taiwan had a single censoring autonomous system (compared to 6 in China, 0 in the
+United States and many other countries, and around 4-5 in a few European countries). This statistic supports the idea that Taiwan is performing some light
+censorship on its network, perhaps through an ISP.
